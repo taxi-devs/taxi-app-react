@@ -2,8 +2,11 @@ const Header = () => {
   return (
     <div className="header">
       <h1>Taxi App</h1>
-      <h3>Home</h3>
-      <h3>Our Cars</h3>
+
+      <ul className="nav">
+        <li> Home </li>
+        <li> Our Cars</li>
+      </ul>
     </div>
   );
 };

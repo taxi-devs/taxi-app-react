@@ -44,8 +44,16 @@
   display: flex;
   flex-direction: row;
   min-height: 15vh;
-  justify-content: space-around;
+  align-content: space-around;
+  background-color: black;
+  width: 100%;
 }
+
+/* .nav{
+  display: flex;
+  flex-flow: row;
+  justify-content: space-evenly;
+} */
 
 .footer{
   min-height: 15vh;
