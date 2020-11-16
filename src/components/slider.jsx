@@ -1,14 +1,12 @@
 import React, { useState } from "react";
-import { css, jsx } from "@emotion/core";
+import { css, jsx } from "@emotion/react";
 
 /**
  *  @function Slider
  */
 
 const Slider = () => {
-  return <div css={SliderCSS}>{/*
-            
-            */}</div>;
+  return <div css={SliderCSS}></div>;
 };
 
 const SliderCSS = css`
