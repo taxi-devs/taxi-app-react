@@ -6,7 +6,7 @@ import { css, jsx } from '@emotion/react';
  */
 
 const Slider = () => {
-    return(
+    return (
         <div css={SliderCSS}>
             {/*
             
