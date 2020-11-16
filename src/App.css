@@ -36,3 +36,17 @@
     transform: rotate(360deg);
   }
 }
+
+
+/* ---------------- OWN CSS */
+
+.header{
+  display: flex;
+  flex-direction: row;
+  min-height: 15vh;
+  justify-content: space-around;
+}
+
+.footer{
+  min-height: 15vh;
+}
