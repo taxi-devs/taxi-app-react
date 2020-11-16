@@ -1,5 +1,13 @@
-const Body = () => {
-  return "BOdy PAge";
-};
+import React, { Component } from 'react'
+import Slider from './slider'
 
-export default Body;
+export default class Body extends Component {
+    render() {
+        console.log("Body renders")
+        return (
+            <div>
+                <Slider />
+            </div>
+        )
+    }
+}
