@@ -6,7 +6,7 @@ export default class Body extends Component {
         console.log("Body renders")
         return (
             <div>
-                {/* <Slider /> */}
+                <Slider />
             </div>
         )
     }
