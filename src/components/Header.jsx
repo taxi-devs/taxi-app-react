@@ -1,12 +1,14 @@
 const Header = () => {
   return (
     <div className="header">
-      <h1>Taxi App</h1>
+      <div id="app-name">
+        <h1>Taxi App</h1>
+      </div>
 
-      <ul className="nav">
+      <div id="nav">
         <li> Home </li>
         <li> Our Cars</li>
-      </ul>
+      </div>
     </div>
   );
 };
