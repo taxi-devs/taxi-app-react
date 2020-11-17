@@ -1,7 +1,7 @@
 import "./App.css";
 
 import Header from "./components/Header";
-import Body from "./components/Body";
+import Home from "./components/Home";
 import Footer from "./components/Footer";
 
 function App() {
@@ -9,7 +9,7 @@ function App() {
     <div className="App">
       <header className="App-header">
         <Header />
-        <Body />
+        <Home />
         <Footer />
       </header>
     </div>
