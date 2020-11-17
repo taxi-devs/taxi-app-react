@@ -9,11 +9,9 @@ class App extends Component {
   // state
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <Header />
-          <Footer />
-        </header>
+      <div className="wrappper">
+        <Header />
+        <Footer />
       </div>
     );
   }
