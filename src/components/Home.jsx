@@ -1,7 +1,10 @@
+import Slider from './Slider'
+import CarImages from './SlideImages'
+
 const Home = () => {
     return (
         <div className="body-page">
-            <Slider slides={CarImages} />
+            <Slider slides={ CarImages } />
             <h2>Need a Ride from a Trusted Service Provider???</h2>
             <q>Check Us Out</q>
 
