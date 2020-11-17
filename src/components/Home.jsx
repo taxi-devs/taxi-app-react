@@ -1,14 +1,13 @@
-import React, { Component } from 'react'
-import Slider from './Slider'
-import { CarImages } from './SlideImages'
+const Home = () => {
+    return (
+        <div className="body-page">
+            <Slider slides={CarImages} />
+            <h2>Need a Ride from a Trusted Service Provider???</h2>
+            <q>Check Us Out</q>
 
-export default class Home extends Component {
-    render() {
-        console.log("Home renders")
-        return (
-            <div>
-                <Slider slides={ CarImages } />
-            </div>
-        )
-    }
-}
+            <button>BOOK NOW</button>
+        </div>
+    );
+};
+
+export default Home;
