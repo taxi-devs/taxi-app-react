@@ -7,6 +7,7 @@ import Footer from "./components/Footer";
 
 class App extends Component {
   state = {
+    registeredUsers: [],
     redirect: false,
     items: [
       {

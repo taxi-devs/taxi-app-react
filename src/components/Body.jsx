@@ -8,18 +8,20 @@ import {
 
 import Gallery from "./Gallery";
 import Home from "./Home";
-import BookingForm from "./BookingForm";
+import BookingForm from "./users/UserBookingForm";
+// import AddDriver from "./admin/AdminAddDriver";
 
-// const Header = ({handleRedirect}) => {
+import ViewUsers from "./admin/AdminViewAllUsers";
+
 const Body = ({ carItems }) => {
   return (
     <Router>
-      <div className="header">
+      <header>
         <div id="app-name">
-          <h1>Taxi App</h1>
+          <h2>Taxi App</h2>
         </div>
 
-        <nav id="nav">
+        <nav>
           <Link to="/">
             <li>Home</li>
           </Link>
@@ -27,10 +29,14 @@ const Body = ({ carItems }) => {
             <li>Our Cars</li>
           </Link>
           <Link to="/booking-form">
-            <li>BookingForm</li>
+            <li>Forms</li>
+          </Link>
+
+          <Link to="/registered-user">
+            <li>ViewUsers</li>
           </Link>
         </nav>
-      </div>
+      </header>
 
       <Switch>
         <Route exact path="/">
@@ -46,8 +52,16 @@ const Body = ({ carItems }) => {
           <Gallery carItems={carItems} />
         </Route>
 
+        {/* <Route path="/booking-form">
+          <BookingForm />
+        </Route> */}
+
         <Route path="/booking-form">
           <BookingForm />
+        </Route>
+
+        <Route>
+          <ViewUsers path="/registered-user" />
         </Route>
 
         {/* <Route path="/booking-form">
