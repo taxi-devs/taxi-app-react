@@ -1,24 +1,26 @@
-const ViewUsers = () => {
+const ViewUsers = ({ registeredUsers }) => {
+  console.log("herere....", registeredUsers);
   return (
-    <table>
-      <tr>
-        <th>id</th>
-        <th>username</th>
-        <th>fullname</th>
-        <th>email</th>
-      </tr>
-      <tr>
-        <td>_id.no</td>
-        <td>user.name</td>
-        <td>full.name</td>
-        <td>email.address</td>
-
-        <input type="submit" value="edit" />
-
-        <input type="submit" value="delete" />
-      </tr>
-    </table>
+    <>
+      {registeredUsers.length === 0 ? (
+        <>
+          <h2>No Users To Show</h2>
+        </>
+      ) : (
+        <>
+          {registeredUsers.map((user) => {
+            const { _id, fullName, username, email } = user;
+            return (
+              <ul className="list" key={_id}>
+                <li>Name: {fullName}</li>
+                <li>Username: {username}</li>
+                <li>Email: {email}</li>
+              </ul>
+            );
+          })}
+        </>
+      )}
+    </>
   );
 };
-
 export default ViewUsers;

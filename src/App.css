@@ -67,6 +67,12 @@ li{
   border-radius: 2px;
   color: white;
 }
+.list{background-color: black;
+}
+
+.list li {
+	padding: 10px;
+}
 
 li:hover {
   color: orange;

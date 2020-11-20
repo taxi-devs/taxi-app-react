@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import axios from "axios";
 
 import "./App.css";
 
@@ -7,7 +8,21 @@ import Footer from "./components/Footer";
 
 class App extends Component {
   state = {
-    registeredUsers: [],
+    url: "http://192.168.100.61:2000",
+    registeredUsers: [
+      {
+        _id: "rw34wr4r",
+        fullName: "Valen",
+        email: "test@null.com",
+        username: "vcherake",
+      },
+      {
+        _id: "rer34gr4r",
+        fullName: "Nanoline",
+        email: "test@null.com",
+        username: "vcherake",
+      },
+    ],
     redirect: false,
     items: [
       {
@@ -34,22 +49,46 @@ class App extends Component {
     ],
   };
 
+  getRegisteredUsers = () => {
+    console.log(this.state.url);
+    axios
+      .get(`${this.state.url}/view-user`)
+      .then((resp) => {
+        console.log("resp");
+        console.log(resp.data);
+        this.setState(() => {
+          return { registeredUsers: resp.data };
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  componentDidMount() {
+    this.getRegisteredUsers();
+  }
+
   render() {
+    console.log("data =>", this.state.registeredUsers);
     return (
       <div className="wrapper">
         <Body
           carItems={this.state.items}
           redirectStatus={this.state.redirect}
           handleRedirect={this.redirect}
+          registeredUsers={this.state.registeredUsers}
         />
         <Footer />
       </div>
     );
   }
 
-  redirect = () => {
-    console.log("btn clicked");
-  };
-}
+  // registerNewUser = (evt) => {
+  //   evt.preventDefault();
+
+  //   const newUserDetails = {};
+  // };
+} // class component end block
 
 export default App;

@@ -8,12 +8,11 @@ import {
 
 import Gallery from "./Gallery";
 import Home from "./Home";
-import BookingForm from "./users/UserBookingForm";
-// import AddDriver from "./admin/AdminAddDriver";
+import UserSignUp from "./forms/client/Registration";
 
 import ViewUsers from "./admin/AdminViewAllUsers";
 
-const Body = ({ carItems }) => {
+const Body = ({ carItems, registeredUsers }) => {
   return (
     <Router>
       <header>
@@ -28,12 +27,12 @@ const Body = ({ carItems }) => {
           <Link to="/gallery">
             <li>Our Cars</li>
           </Link>
-          <Link to="/booking-form">
-            <li>Forms</li>
+          <Link to="/register">
+            <li>Sign Up</li>
           </Link>
 
           <Link to="/registered-user">
-            <li>ViewUsers</li>
+            <li>Users</li>
           </Link>
         </nav>
       </header>
@@ -52,16 +51,12 @@ const Body = ({ carItems }) => {
           <Gallery carItems={carItems} />
         </Route>
 
-        {/* <Route path="/booking-form">
-          <BookingForm />
-        </Route> */}
-
-        <Route path="/booking-form">
-          <BookingForm />
+        <Route path="/register">
+          <UserSignUp />
         </Route>
 
-        <Route>
-          <ViewUsers path="/registered-user" />
+        <Route path="/registered-user">
+          <ViewUsers registeredUsers={registeredUsers} />
         </Route>
 
         {/* <Route path="/booking-form">
