@@ -8,7 +8,7 @@ import {
 
 import Gallery from "./Gallery";
 import Home from "./Home";
-import BookingForm from "./users/UserBookingForm";
+import BookingAdd from "./forms/BookingAdd";
 // import AddDriver from "./admin/AdminAddDriver";
 
 import ViewUsers from "./admin/AdminViewAllUsers";
@@ -57,7 +57,7 @@ const Body = ({ carItems }) => {
         </Route> */}
 
         <Route path="/booking-form">
-          <BookingForm />
+          <BookingAdd />
         </Route>
 
         <Route>

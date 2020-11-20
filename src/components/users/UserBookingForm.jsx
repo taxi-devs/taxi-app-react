@@ -51,7 +51,7 @@ const BookingForm = () => {
         </div>
         <div>
           <label>Vehicle Type</label>
-          // selection to DB to be placed here
+          {/* // selection to DB to be placed here */}
         </div>
         <div>
           <label>No. of Passenger(s)</label>
