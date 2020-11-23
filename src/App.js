@@ -22,6 +22,19 @@ class App extends Component {
         email: "test@null.com",
         username: "vcherake",
       },
+
+      {
+        _id: "rer34gr4r",
+        fullName: "Nanoline",
+        email: "test@null.com",
+        username: "vcherake",
+      },
+      {
+        _id: "rer34gr4r",
+        fullName: "Nanoline",
+        email: "test@null.com",
+        username: "vcherake",
+      },
     ],
     redirect: false,
     items: [
@@ -65,8 +78,15 @@ class App extends Component {
       });
   };
 
+  getBookings = () => {
+    axios
+      .get(`${this.state.url}/book`)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
+  };
   componentDidMount() {
     this.getRegisteredUsers();
+    this.getBookings();
   }
 
   render() {

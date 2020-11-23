@@ -8,7 +8,10 @@ import {
 
 import Gallery from "./Gallery";
 import Home from "./Home";
-import UserSignUp from "./forms/client/Registration";
+
+import UserSignUp from "./users/UserSignUpForm";
+import Login from "./forms/Login";
+import BookingForm from "./users/UserBookingForm";
 
 import ViewUsers from "./admin/AdminViewAllUsers";
 
@@ -33,6 +36,10 @@ const Body = ({ carItems, registeredUsers }) => {
 
           <Link to="/registered-user">
             <li>Users</li>
+          </Link>
+
+          <Link to="/login">
+            <li>User Login</li>
           </Link>
         </nav>
       </header>
@@ -59,9 +66,13 @@ const Body = ({ carItems, registeredUsers }) => {
           <ViewUsers registeredUsers={registeredUsers} />
         </Route>
 
-        {/* <Route path="/booking-form">
-          <Redirect to="/" />
-        </Route> */}
+        <Route path="/login">
+          <Login />
+        </Route>
+
+        <Route path="/book">
+          <BookingForm />
+        </Route>
       </Switch>
     </Router>
   );

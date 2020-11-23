@@ -1,7 +1,7 @@
 const ViewUsers = ({ registeredUsers }) => {
   console.log("herere....", registeredUsers);
   return (
-    <>
+    <div className="body-page">
       {registeredUsers.length === 0 ? (
         <>
           <h2>No Users To Show</h2>
@@ -20,7 +20,7 @@ const ViewUsers = ({ registeredUsers }) => {
           })}
         </>
       )}
-    </>
+    </div>
   );
 };
 export default ViewUsers;

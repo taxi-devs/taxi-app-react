@@ -1,108 +1,103 @@
-import React, { Component } from "react";
+// // import { handleInputs } from "./processForm";
 
-import axios from "axios";
+// // import axios from "axios";
 
-class UserSignUp extends Component {
-  state = {
-    email: "",
-    fullname: "",
-    formError: null,
-    password: "",
-    username: "",
-    url: "http://192.168.100.61:2000",
-  };
+// const UserSignUp = ({ registeredUsers }) => {
+//   const [{ fullname, email, password, username }, handleChange] = handleInputs({
+//     fullname: "",
+//     email: "",
+//     password: "",
+//     username: "",
+//   });
 
-  render() {
-    return (
-      <div className="addForm">
-        <h2>Register With Us</h2>
-        <form>
-          <div>
-            <label>Full Name</label>
-            <input
-              onChange={this.handleChange}
-              type="text"
-              name="fullname"
-              placeholder="enter fullname"
-              value={this.state.fullname}
-            />
-          </div>
-          <div>
-            <label>User Name</label>
-            <input
-              onChange={this.handleChange}
-              name="username"
-              type="text"
-              placeholder="enter username"
-              value={this.state.username}
-            />
-          </div>
-          <div>
-            <label>Email</label>
-            <input
-              type="text"
-              name="email"
-              placeholder="enter your email"
-              value={this.state.email}
-              onChange={this.handleChange}
-            />
-          </div>
+//   const registerNewUser = (evt) => {
+//     evt.preventDefault();
+//     console.log(evt.target);
 
-          <div>
-            <label>Password</label>
-            <input
-              name="password"
-              onChange={this.handleChange}
-              id="password"
-              type="password"
-              placeholder="enter a password"
-              value={this.state.password}
-            />
-          </div>
+//     const newUserDetails = {
+//       fullName: fullname,
+//       email: email,
+//       password: password,
+//       username: username,
+//     };
 
-          <div className="action-btn">
-            <input
-              onChange={this.handleChange}
-              id="submit"
-              type="submit"
-              value="Sign Up"
-              onClick={this.registerNewUser}
-            />
-          </div>
-        </form>
-      </div>
-    );
-  }
+//     {
+//       registeredUsers.push(newUserDetails);
+//     }
 
-  handleChange = (evt) => {
-    this.setState({ [evt.target.name]: evt.target.value }, () => {
-      console.log(this.state[evt.target.name]);
-    });
-  };
+//     console.log(newUserDetails);
 
-  registerNewUser = (evt) => {
-    evt.preventDefault();
-    console.log(evt.target);
+//     // axios
+//     //   .post(`${this.state.url}/sign-up`, newUserDetails)
+//     //   .then((resp) => {
+//     //     console.log("user added");
+//     //     console.log(resp.data);
+//     //   })
+//     //   .catch((err) => {
+//     //     console.log(err);
+//     //   });
+//   };
 
-    const newUserDetails = {
-      fullName: this.state.fullname,
-      email: this.state.email,
-      password: this.state.password,
-      username: this.state.username,
-    };
+//   return (
+//     <div className="body-page">
+//       <h2>Register With Us</h2>
+//       <form className="signUp-form">
+//         <div>
+//           <label>Full Name</label>
+//           <input
+//             onChange={handleChange}
+//             type="text"
+//             name="fullname"
+//             placeholder="enter fullname"
+//             value={fullname}
+//           />
+//         </div>
 
-    console.log(newUserDetails);
+//         <div>
+//           <label>User Name</label>
+//           <input
+//             onChange={handleChange}
+//             name="username"
+//             type="text"
+//             placeholder="enter username"
+//             value={username}
+//           />
+//         </div>
 
-    axios
-      .post(`${this.state.url}/sign-up`, newUserDetails)
-      .then((resp) => {
-        console.log("user added");
-        console.log(resp.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-}
+//         <div>
+//           <label>Email</label>
+//           <input
+//             type="text"
+//             name="email"
+//             placeholder="enter your email"
+//             value={email}
+//             onChange={handleChange}
+//           />
+//         </div>
 
-export default UserSignUp;
+//         <div>
+//           <label>Password</label>
+//           <input
+//             name="password"
+//             onChange={handleChange}
+//             id="password"
+//             type="password"
+//             placeholder="enter a password"
+//             value={password}
+//           />
+//         </div>
+
+//         <div className="action-btn">
+//           <input
+//             id="submit"
+//             type="submit"
+//             value="Sign Up"
+//             onClick={registerNewUser}
+//           />
+//         </div>
+//       </form>
+//     </div>
+//   );
+// };
+
+// export default UserSignUp;
