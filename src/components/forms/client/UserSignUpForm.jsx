@@ -23,6 +23,7 @@ const UserSignUp = () => {
       password: password,
       username: username,
     };
+    console.log(newUserDetails);
 
     axios
       .post(`${url}/sign-up`, newUserDetails)
@@ -82,13 +83,6 @@ const UserSignUp = () => {
           />
         </div>
 
-        {/* <input //submit button
-          id="submit"
-          type="submit"
-          value="Sign Up"
-          onClick={registerNewUser}
-        /> */}
-
         <input //submit button
           id="submit"
           type="submit"
@@ -98,12 +92,6 @@ const UserSignUp = () => {
       </form>
     </div>
   );
-
-  // handleChange = (evt) => {
-  //   this.setState({ [evt.target.name]: evt.target.value }, () => {
-  //     console.log(this.state[evt.target.name]);
-  //   });
-  // };
 };
 
 export default UserSignUp;

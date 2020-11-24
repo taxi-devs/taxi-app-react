@@ -9,11 +9,12 @@ import {
 import Gallery from "./Gallery";
 import Home from "./Home";
 
-import UserSignUp from "./users/UserSignUpForm";
+// import UserSignUp from "./users/UserSignUpForm";
+import UserSignUp from "./forms/client/Registration";
 import Login from "./forms/Login";
-import BookingForm from "./users/UserBookingForm";
+import BookingForm from "./forms/client/UserBookingForm";
 
-import ViewUsers from "./admin/AdminViewAllUsers";
+import ViewUsers from "./forms/admin/AdminViewAllUsers";
 
 const Body = ({ carItems, registeredUsers }) => {
   return (
