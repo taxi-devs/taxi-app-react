@@ -8,12 +8,12 @@ import {
 
 import Gallery from "./Gallery";
 import Home from "./Home";
-import BookingAdd from "./forms/BookingAdd";
+import UserBooking from "./forms/client/UserBookingForm";
 // import AddDriver from "./admin/AdminAddDriver";
 
 import UserSignUp from "./forms/client/UserSignUpForm";
 import UserLogin from "./forms/client/UserLoginForm";
-import BookingForm from "./forms/client/UserBookingForm";
+// import BookingForm from "./forms/client/UserBookingForm";
 
 import ViewUsers from "./forms/admin/AdminViewAllUsers";
 
@@ -29,9 +29,15 @@ const Body = ({ carItems, registeredUsers }) => {
           <Link to="/">
             <li>Home</li>
           </Link>
+
           <Link to="/gallery">
             <li>Our Cars</li>
           </Link>
+
+          <Link to="/book">
+            <li>Make Booking</li>
+          </Link>
+
           <Link to="/register">
             <li>Sign Up</li>
           </Link>
@@ -72,7 +78,7 @@ const Body = ({ carItems, registeredUsers }) => {
         </Route>
 
         <Route path="/book">
-          <BookingForm />
+          <UserBooking />
         </Route>
       </Switch>
     </Router>

@@ -2,7 +2,7 @@ import React from "react";
 
 // import axios from "axios";
 import useForm from "./useForm";
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const UserLogin = () => {
   const [{ username, password }, handleChange] = useForm({
