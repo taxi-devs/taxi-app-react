@@ -1,22 +1,22 @@
 import React, { useState } from 'react'
-// import { Redirect } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import axios from 'axios'
 
 export default function BookingAdd(props) {
     const initialInputState = {
         username: "", pickup_location: "Vision City", pickup_time: "", dropoff_location: "Airport", dropoff_time: "", date: new Date().toJSON(), car: "Toyota Mark II", number_of_passengers: ""
     };
-    const [eachEntry, setEachEntry] = useState(initialInputState)
-    const { username, pickup_location, pickup_time, dropoff_location, dropoff_time, date, car, number_of_passengers } = eachEntry
-
+    const [eachEntry, setEachEntry] = useState(initialInputState);
+    const { username, pickup_location, pickup_time, dropoff_location, dropoff_time, date, car, number_of_passengers } = eachEntry;
+    const history = useHistory();
+    
     const handleInputChange = event => {
-        setEachEntry({ ...eachEntry, [event.target.name]: event.target.value })
-        console.log(event.target.value)
+        setEachEntry({ ...eachEntry, [event.target.name]: event.target.value });
+        console.log(event.target.value);
     }
     
-    const clearState = () => {
-        setEachEntry({ initialInputState });
-        console.log("STATE CLEARED");
+    const redirectHome = () => {
+        history.push('/');
     }
 
     const handleSubmit = event => {
@@ -36,8 +36,9 @@ export default function BookingAdd(props) {
             console.log(res);
             console.log("axios posted")
         }).then(() => {
-            event.target.reset()
-            clearState()
+            alert('Form submitted');
+            event.target.reset();
+            redirectHome();
         }).catch(error => {
             console.log(error)
             console.log('username', username)
@@ -56,7 +57,7 @@ export default function BookingAdd(props) {
                 </div>
                 <div>
                     <label htmlFor="pickup_location">Pick-up Location</label>
-                    <select type="Text" id="pickup_location" name="pickup_location" onChange={handleInputChange} defaultValue="Vision City">
+                    <select type="Text" id="pickup_location" name="pickup_location" onChange={handleInputChange} defaultValue="">
                         <option value="Vision City">Vision City</option>
                         <option value="Gerehu">Gerehu</option>
                         <option value="Boroko">Boroko</option>
@@ -101,7 +102,7 @@ export default function BookingAdd(props) {
                 </div>
                 <div className="action-btn">
                     <input id="submit" type="submit" value="Submit" />
-                    <input id="cancel" type="reset" value="Cancel" onClick={clearState} />
+                    <input id="cancel" type="reset" value="Cancel" onClick={redirectHome} />
                 </div>
             </form>
         </div>
