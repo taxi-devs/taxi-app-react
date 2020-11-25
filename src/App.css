@@ -1,14 +1,13 @@
-body{
-  background-image: url('https://upload.wikimedia.org/wikipedia/commons/d/db/NYC_Taxi.jpg');
-background-repeat: round
+body {
+  background-image: url("https://upload.wikimedia.org/wikipedia/commons/d/db/NYC_Taxi.jpg");
+  background-repeat: round;
 }
-
 
 .wrapper {
   /*background-color: #282c34;*/
 
   min-height: 100vh;
-   /* display: flex;
+  /* display: flex;
   flex-direction: column;
   align-items: center;
  justify-content: center; */
@@ -17,37 +16,62 @@ background-repeat: round
   text-align: center;
 }
 
-header{
+header {
   display: flex;
   flex-direction: row;
-  min-height: 10vh;
-  align-content: space-around;
-  background-color:#2d2a2a8a;
+  min-height: 15vh;
+  align-items: center;
+  background-color: #2d2a2a8a;
   width: 100%;
 }
 
+header li {
+  padding: 20px;
+}
+
 nav {
-	display: flex;
-	width: 50%;
-	flex-flow: row;
+  display: flex;
+  width: 50%;
+  flex-flow: row;
   justify-content: space-evenly;
   align-items: center;
 }
 
 #app-name {
-	width: 50%;
+  width: 50%;
+}
+
+.signUp-form div {
+  padding: 5px;
+  display: flex;
+  justify-content: space-between;
+  margin-right: 5px;
+}
+
+.signUp-form {
+  padding: 30px;
+  background: #ffffffe8;
+  border-radius: 2px;
+  color: #000;
+}
+.signUp-form label {
+  padding-right: 1em;
+}
+
+#submit {
+  margin-top: 1em;
 }
 
 .fleet-gallery {
-	display: flex;
-	flex-flow: row wrap;
-	justify-content: space-evenly;
-	padding: 10px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  padding: 0;
 }
 
 article {
-	display: flex;
-	flex-flow: column;
+  display: flex;
+  flex-flow: column;
   padding: 5px;
   background-color: cadetblue;
   margin: 10px;
@@ -59,22 +83,28 @@ article {
   cursor: pointer;
 }
 
-li{
+li {
   list-style-type: none;
   cursor: pointer;
   display: inline-block;
-  padding: 40px;
+
   border-radius: 2px;
   color: white;
+}
+.list {
+  background-color: black;
+}
+
+.list li {
+  padding: 10px;
 }
 
 li:hover {
   color: orange;
-  background-color: 
-  rgba(75, 89, 89, 0.48);
+  background-color: rgba(75, 89, 89, 0.48);
 }
 
-.body-page{
+.body-page {
   min-height: 70vh;
   display: flex;
   flex-direction: column;
@@ -83,27 +113,27 @@ li:hover {
   /* padding: 8px; */
 }
 
-button{
+button {
   cursor: pointer;
 }
 
-table{
+table {
   margin: 0 auto;
   padding: 10px;
   background-color: rgb(99, 98, 93);
 }
 
 .footer {
-	min-height: 10vh;
-	background-color: #110e0e;
-  width: 100%; 
+  min-height: 15vh;
+  background-color: #110e0e79;
+  width: 100%;
   display: flex;
   justify-content: center;
 }
 
 .footer p {
   align-self: center;
-  font-size: 15px;
+  /* font-size: 15px; */
 }
 
 .footer p:hover {
@@ -115,4 +145,3 @@ table{
 /* .left-section, .right-section{
 width: 50%;
 } */
-

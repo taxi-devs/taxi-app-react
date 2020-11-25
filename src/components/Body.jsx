@@ -11,9 +11,13 @@ import Home from "./Home";
 import BookingAdd from "./forms/BookingAdd";
 // import AddDriver from "./admin/AdminAddDriver";
 
-import ViewUsers from "./admin/AdminViewAllUsers";
+import UserSignUp from "./forms/client/UserSignUpForm";
+import UserLogin from "./forms/client/UserLoginForm";
+import BookingForm from "./forms/client/UserBookingForm";
 
-const Body = ({ carItems }) => {
+import ViewUsers from "./forms/admin/AdminViewAllUsers";
+
+const Body = ({ carItems, registeredUsers }) => {
   return (
     <Router>
       <header>
@@ -28,19 +32,22 @@ const Body = ({ carItems }) => {
           <Link to="/gallery">
             <li>Our Cars</li>
           </Link>
-          <Link to="/booking-form">
-            <li>Forms</li>
+          <Link to="/register">
+            <li>Sign Up</li>
           </Link>
 
           <Link to="/registered-user">
-            <li>ViewUsers</li>
+            <li>Users</li>
+          </Link>
+
+          <Link to="/login">
+            <li>User Login</li>
           </Link>
         </nav>
       </header>
 
       <Switch>
         <Route exact path="/">
-          {/* <Home handleRedirect={handleRedirect}/> */}
           <Home
             carItems={carItems}
             gohandleRedirect={() => {
@@ -52,21 +59,21 @@ const Body = ({ carItems }) => {
           <Gallery carItems={carItems} />
         </Route>
 
-        {/* <Route path="/booking-form">
+        <Route path="/register">
+          <UserSignUp />
+        </Route>
+
+        <Route path="/registered-user">
+          <ViewUsers registeredUsers={registeredUsers} />
+        </Route>
+
+        <Route path="/login">
+          <UserLogin />
+        </Route>
+
+        <Route path="/book">
           <BookingForm />
-        </Route> */}
-
-        <Route path="/booking-form">
-          <BookingAdd />
         </Route>
-
-        <Route>
-          <ViewUsers path="/registered-user" />
-        </Route>
-
-        {/* <Route path="/booking-form">
-          <Redirect to="/" />
-        </Route> */}
       </Switch>
     </Router>
   );

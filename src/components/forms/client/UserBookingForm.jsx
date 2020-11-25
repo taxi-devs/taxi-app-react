@@ -25,7 +25,7 @@ const BookingForm = () => {
         <div>
           <label>Pick Up Time</label>
           <input id="password" type="time" value="password" />
-        </div>{" "}
+        </div>
         <div>
           <label for="dropoff_location">Drop-off Location</label>
 
@@ -51,7 +51,7 @@ const BookingForm = () => {
         </div>
         <div>
           <label>Vehicle Type</label>
-          {/* // selection to DB to be placed here */}
+          {"selection to DB to be placed here"}
         </div>
         <div>
           <label>No. of Passenger(s)</label>
