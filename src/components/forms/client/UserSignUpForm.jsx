@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 import useForm from "./useForm";
@@ -89,6 +90,10 @@ const UserSignUp = () => {
           value="Sign Up"
           onClick={registerNewUser}
         />
+
+        <Link to="/">
+          <button>Cancel</button>
+        </Link>
       </form>
     </div>
   );

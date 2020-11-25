@@ -10,8 +10,8 @@ import Gallery from "./Gallery";
 import Home from "./Home";
 
 // import UserSignUp from "./users/UserSignUpForm";
-import UserSignUp from "./forms/client/Registration";
-import Login from "./forms/Login";
+import UserSignUp from "./forms/client/UserSignUpForm";
+import UserLogin from "./forms/client/UserLoginForm";
 import BookingForm from "./forms/client/UserBookingForm";
 
 import ViewUsers from "./forms/admin/AdminViewAllUsers";
@@ -47,7 +47,6 @@ const Body = ({ carItems, registeredUsers }) => {
 
       <Switch>
         <Route exact path="/">
-          {/* <Home handleRedirect={handleRedirect}/> */}
           <Home
             carItems={carItems}
             gohandleRedirect={() => {
@@ -68,7 +67,7 @@ const Body = ({ carItems, registeredUsers }) => {
         </Route>
 
         <Route path="/login">
-          <Login />
+          <UserLogin />
         </Route>
 
         <Route path="/book">

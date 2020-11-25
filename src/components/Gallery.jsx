@@ -1,5 +1,3 @@
-import { Link } from "react-router-dom";
-
 import Cars from "./Cars";
 
 const Gallery = ({ carItems }) => {
@@ -10,10 +8,6 @@ const Gallery = ({ carItems }) => {
       </h2>
       <section className="fleet-gallery">
         <Cars carItems={carItems} />
-        <Link to="/register">
-          {/* <button>Sign Up</button> */}
-          Sign Up
-        </Link>
       </section>
     </div>
   );
