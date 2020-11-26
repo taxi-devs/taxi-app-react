@@ -1,24 +1,16 @@
 import React from 'react'
-import Booking from "./Booking";
 import { Link } from "react-router-dom";
+import BookingDetailed from './BookingDetailed'
 
-export default function Bookings(props) {
-    console.log("Bookings Component: All bookings")
+export default function BookingPage(props) {
+    console.log("BOOKING LIST")
     console.log(props)
-    const allBookingsRender = (bookings) => {
-        return bookings.map((booking) => {
+
+    const multiBookingRender = bookings => {
+        return bookings.map(booking => {
             return (
-                <Link to={`/view-all-booking/:id`} key={booking.id} >
-                    < Booking
-                        passenger_name={booking.passenger_name}
-                        pickup_location={booking.pickup_location}
-                        dropoff_location={booking.dropoff_location}
-                        pickup_time={booking.pickup_time}
-                        dropoff_time={booking.dropoff_time}
-                        date={booking.date}
-                        car={booking.car}
-                        number_of_passengers={booking.number_of_passengers}
-                    />
+                <Link to={`bookings/${booking.id}`} key={booking.id} >
+                    <BookingDetailed name={booking.passenger_name} date={booking.date} bookingId={booking._id} />
                 </Link>
             )
         })
@@ -26,8 +18,10 @@ export default function Bookings(props) {
 
     return (
         <div>
-            <h3>All Bookings</h3>
-            { allBookingsRender(props.bookings)}
+            <h3>Booking List</h3>
+            {
+                multiBookingRender(props.bookings)
+            }
         </div>
     )
 }
