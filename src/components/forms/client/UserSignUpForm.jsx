@@ -5,7 +5,7 @@ import axios from "axios";
 import useForm from "./useForm";
 
 const UserSignUp = () => {
-  const url = "http://192.168.100.61:2000";
+  const url = "http://localhost:2000";
 
   const [{ email, fullname, password, username }, handleChange] = useForm({
     email: "",
