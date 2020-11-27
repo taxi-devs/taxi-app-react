@@ -6,9 +6,9 @@ import "./App.css";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 
-class App extends Component {
+export default class App extends Component {
   state = {
-    url: "http://192.168.100.61:2000",
+    url: "http://localhost:2000",
     registeredUsers: [
       {
         _id: "rw34wr4r",
@@ -63,7 +63,8 @@ class App extends Component {
   };
 
   getRegisteredUsers = () => {
-    console.log(this.state.url);
+    console.log("getRegisterUsers()")
+    console.log('this.state.url', this.state.url);
     axios
       .get(`${this.state.url}/view-user`)
       .then((resp) => {
@@ -85,30 +86,25 @@ class App extends Component {
       .catch((err) => console.log(err));
   };
   componentDidMount() {
+    console.log("mounting compoents...")
     this.getRegisteredUsers();
     this.getBookings();
+    console.log("components mounted")
   }
 
   render() {
+    console.log("App.js rendering...")
     console.log("data =>", this.state.registeredUsers);
     return (
       <div className="wrapper">
         <Body
           carItems={this.state.items}
-          redirectStatus={this.state.redirect}
-          handleRedirect={this.redirect}
+          // redirectStatus={this.state.redirect}
+          // handleRedirect={this.redirect}
           registeredUsers={this.state.registeredUsers}
         />
         <Footer />
       </div>
     );
   }
-
-  // registerNewUser = (evt) => {
-  //   evt.preventDefault();
-
-  //   const newUserDetails = {};
-  // };
-} // class component end block
-
-export default App;
+}
