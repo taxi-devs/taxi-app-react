@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
+
+import AuthApi from "../../AuthApi";
+import Cookies from "js-cookie";
 
 export default function UserBooking(props) {
   const initialInputState = {
@@ -33,12 +36,26 @@ export default function UserBooking(props) {
 
   const redirectHome = () => {
     history.push("/");
+
+    // Auth.setAuth(false);
+    // Cookies.remove("user");
+  };
+
+  const Auth = useContext(AuthApi);
+
+  const handleLogOut = () => {
+    Auth.setUserAuth(false);
+    Cookies.remove("user");
   };
 
   const handleSubmit = (event) => {
     event.preventDefault();
     console.log("FORM SUBMITTED");
     console.log(eachEntry);
+
+    // ==================================
+
+    // ==============================
     axios
       .post("http://localhost:2000/add-booking", {
         passenger_name: username,
@@ -158,6 +175,7 @@ export default function UserBooking(props) {
           />
         </div>
       </form>
+      <button onClick={handleLogOut}>Logout</button>
     </div>
   );
 }
