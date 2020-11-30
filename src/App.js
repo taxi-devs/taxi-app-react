@@ -1,8 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-import "./App.css";
+// import
+// <header>
 
+import "./App.css";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 
@@ -17,14 +19,14 @@ class App extends Component {
         username: "vcherake",
       },
       {
-        _id: "rer3434gr4r",
+        _id: "rer34348899r",
         fullName: "Nanoline",
         email: "test@null.com",
         username: "vcherake",
       },
 
       {
-        _id: "rer38734gr4r",
+        _id: "r34gr4r",
         fullName: "Nanoline",
         email: "test@null.com",
         username: "vcherake",
