@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 
 import Cookies from "js-cookie";
-
 import AuthApi from "./AuthApi";
 
 const AdminLogin = () => {

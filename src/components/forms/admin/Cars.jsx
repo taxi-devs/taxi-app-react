@@ -1,5 +1,5 @@
 const ViewsCars = () => {
-  return <h3 style={{ color: "black" }}>ViewCars</h3>;
+  return <h3 color="black">ViewCars</h3>;
 };
 
 export default ViewsCars;

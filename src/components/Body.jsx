@@ -10,6 +10,13 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import {
+  AdminAccess,
+  AdminRoutes,
+  ProtectedLogin,
+  ProtectedBookingRoute,
+} from "./RouteFunctions";
+
 import Gallery from "./Gallery";
 import Home from "./Home";
 
@@ -101,17 +108,21 @@ const Body = ({ carItems, registeredUsers }) => {
         </header>
 
         <Switch>
-          <Route exact path="/">
-            <Home carItems={carItems} />
-          </Route>
+          <Route
+            exact
+            path="/"
+            render={(props) => <Home {...props} carItems={carItems} />}
+          />
 
-          <Route path="/gallery">
-            <Gallery carItems={carItems} />
-          </Route>
+          <Route
+            path="/gallery"
+            render={(props) => <Gallery {...props} carItems={carItems} />}
+          />
 
-          <Route path="/register">
-            <UserSignUp />
-          </Route>
+          <Route
+            path="/register"
+            render={(props) => <UserSignUp {...props} />}
+          />
 
           <ProtectedLogin component={UserLogin} path="/login" auth={userAuth} />
 
@@ -126,8 +137,8 @@ const Body = ({ carItems, registeredUsers }) => {
           <AdminRoutes
             path="/dashboard"
             component={AdminPanel}
-            users={registeredUsers}
             auth={adminAuth}
+            users={registeredUsers}
           />
         </Switch>
       </Router>
@@ -135,47 +146,31 @@ const Body = ({ carItems, registeredUsers }) => {
   );
 };
 
-const AdminAccess = ({ auth, component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={() => (!auth ? <Component /> : <Redirect to="/dashboard" />)}
-    />
-  );
-};
+// const AdminAccess = ({ auth, component: Component, ...rest }) => {
+//   return (
+//     <Route
+//       {...rest}
+//       render={() => (!auth ? <Component /> : <Redirect to="/dashboard" />)}
+//     />
+//   );
+// };
 
-const AdminRoutes = ({
-  auth,
-  component: Component,
-  registeredUsers,
-  ...rest
-}) => {
-  return (
-    <Route
-      {...rest}
-      render={(props) =>
-        auth ? <Component {...props} /> : <Redirect to="/admin" />
-      }
-    />
-  );
-};
+// const ProtectedLogin = ({ auth, component: Component, ...rest }) => {
+//   return (
+//     <Route
+//       {...rest}
+//       render={() => (!auth ? <Component /> : <Redirect to="/book" />)}
+//     />
+//   );
+// };
 
-const ProtectedLogin = ({ auth, component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={() => (!auth ? <Component /> : <Redirect to="/book" />)}
-    />
-  );
-};
-
-const ProtectedBookingRoute = ({ auth, component: Component, ...rest }) => {
-  return (
-    <Route
-      {...rest}
-      render={() => (auth ? <Component /> : <Redirect to="/login" />)}
-    />
-  );
-};
+// const ProtectedBookingRoute = ({ auth, component: Component, ...rest }) => {
+//   return (
+//     <Route
+//       {...rest}
+//       render={() => (auth ? <Component /> : <Redirect to="/login" />)}
+//     />
+//   );
+// };
 
 export default Body;

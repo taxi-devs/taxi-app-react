@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-// import
-// <header>
-
 import "./App.css";
 import Body from "./components/Body";
 import Footer from "./components/Footer";

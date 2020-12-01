@@ -1,14 +1,23 @@
+import React, { useState, useContext } from "react";
 import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
 
 import AuthApi from "./AuthApi";
+import Cookies from "js-cookie";
 
 import ViewUsers from "./forms/admin/AdminViewAllUsers";
 import ViewBookings from "./forms/admin/AdminViewAllBookings";
 import ViewCars from "./forms/admin/Cars";
-import ViewDrivers from "./forms/admin/Drivers";
+import ViewDrivers from "./forms/admin/AdminViewAllDrivers";
 
 const AdminPanel = (props) => {
-  console.log("names", props.registeredUsers);
+  console.log("names", props);
+  const Auth = useContext(AuthApi);
+
+  const handleLogOut = () => {
+    Auth.setAdminAuth(false);
+    Cookies.remove("admin");
+  };
+
   return (
     <AuthApi.Provider>
       <Router>
@@ -31,7 +40,7 @@ const AdminPanel = (props) => {
         </header>
         <Switch>
           <Route path="/users">
-            <ViewUsers registeredUsers={props.registeredUsers} />
+            <ViewUsers users={props.users} />
           </Route>
           <Route path="/bookings">
             <ViewBookings />
@@ -43,7 +52,7 @@ const AdminPanel = (props) => {
             <ViewDrivers />
           </Route>
         </Switch>
-        <button>Logout</button>
+        <button onClick={handleLogOut}>Logout</button>
       </Router>
     </AuthApi.Provider>
   );

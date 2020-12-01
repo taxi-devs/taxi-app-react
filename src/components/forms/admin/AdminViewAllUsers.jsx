@@ -1,14 +1,15 @@
-const ViewUsers = ({ registeredUsers }) => {
-  console.log("herere....", registeredUsers);
+const ViewUsers = ({ users }) => {
+  // console.log("herere....", users.users);
   return (
     <div className="body-page">
-      {registeredUsers.length === 0 ? (
+      {users === undefined ? (
         <>
-          <h2>No Users To Show</h2>
+          <h2>No Users To Show Though We Have Them In the DB</h2>
+          <h3>Items To Be Retrieved from API</h3>
         </>
       ) : (
         <>
-          {registeredUsers.map((user) => {
+          {users.map((user) => {
             const { _id, fullName, username, email } = user;
             return (
               <ul className="list" key={_id}>
