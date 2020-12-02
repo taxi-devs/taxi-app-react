@@ -1,10 +1,4 @@
-import {
-  BrowserRouter as Router,
-  Route,
-  Link,
-  Switch,
-  Redirect,
-} from "react-router-dom";
+import { Route, Redirect } from "react-router-dom";
 
 export const AdminAccess = ({ auth, component: Component, ...rest }) => {
   return (
@@ -23,18 +17,13 @@ export const AdminAccess = ({ auth, component: Component, ...rest }) => {
   );
 };
 
-export const AdminRoutes = ({
-  auth,
-  component: Component,
-  // users = ["test", "names", "obssessed"],
-  ...rest
-}) => {
+export const AdminRoutes = ({ auth, component: Component, ...rest }) => {
   return (
     <Route
       {...rest}
       render={(props) =>
         auth ? (
-          <Component {...props} />
+          <Component {...props} {...rest} />
         ) : (
           <Redirect
             to={{ pathname: "/admin", state: { from: props.location } }}

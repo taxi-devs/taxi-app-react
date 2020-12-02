@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, createContext } from "react";
 import Cookies from "js-cookie";
 import AuthApi from "./AuthApi";
 
@@ -16,6 +16,8 @@ import {
   ProtectedLogin,
   ProtectedBookingRoute,
 } from "./RouteFunctions";
+
+import { UserContext } from "./UserContext";
 
 import Gallery from "./Gallery";
 import Home from "./Home";
@@ -108,38 +110,48 @@ const Body = ({ carItems, registeredUsers }) => {
         </header>
 
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={(props) => <Home {...props} carItems={carItems} />}
-          />
+          <UserContext.Provider value="Hello test from useContext hook">
+            <Route
+              exact
+              path="/"
+              render={(props) => <Home {...props} carItems={carItems} />}
+            />
 
-          <Route
-            path="/gallery"
-            render={(props) => <Gallery {...props} carItems={carItems} />}
-          />
+            <Route
+              path="/gallery"
+              render={(props) => <Gallery {...props} carItems={carItems} />}
+            />
 
-          <Route
-            path="/register"
-            render={(props) => <UserSignUp {...props} />}
-          />
+            <Route
+              path="/register"
+              render={(props) => <UserSignUp {...props} />}
+            />
 
-          <ProtectedLogin component={UserLogin} path="/login" auth={userAuth} />
+            <ProtectedLogin
+              component={UserLogin}
+              path="/login"
+              auth={userAuth}
+            />
 
-          <ProtectedBookingRoute
-            component={UserBooking}
-            path="/book"
-            auth={userAuth}
-          />
+            <ProtectedBookingRoute
+              component={UserBooking}
+              path="/book"
+              auth={userAuth}
+            />
 
-          <AdminAccess path="/admin" component={AdminLogin} auth={adminAuth} />
+            <AdminAccess
+              path="/admin"
+              component={AdminLogin}
+              auth={adminAuth}
+            />
 
-          <AdminRoutes
-            path="/dashboard"
-            component={AdminPanel}
-            auth={adminAuth}
-            users={registeredUsers}
-          />
+            <AdminRoutes
+              path="/dashboard"
+              component={AdminPanel}
+              auth={adminAuth}
+              users={registeredUsers}
+            />
+          </UserContext.Provider>
         </Switch>
       </Router>
     </AuthApi.Provider>
