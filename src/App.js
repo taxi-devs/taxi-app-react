@@ -59,6 +59,7 @@ export default class App extends Component {
         tagLine: "Light, & Fast. Perfect for 2-3 people",
       },
     ],
+    bookings: []
   };
 
   getRegisteredUsers = () => {
@@ -81,19 +82,24 @@ export default class App extends Component {
   getBookings = () => {
     axios
       .get(`${this.state.url}/book`)
-      .then((res) => console.log(res))
+      .then( res => {
+        console.log('BOOKING RESPONSE DATA', res.data);
+        this.setState({ bookings: res.data})
+      })
       .catch((err) => console.log(err));
   };
+
   componentDidMount() {
     console.log("mounting compoents...")
     this.getRegisteredUsers();
     this.getBookings();
     console.log("components mounted")
   }
-
+  
   render() {
     console.log("App.js rendering...")
     console.log("data =>", this.state.registeredUsers);
+    console.log("BOOKINGS", this.state.bookings)
     return (
       <div className="wrapper">
         <Body
@@ -101,6 +107,7 @@ export default class App extends Component {
           // redirectStatus={this.state.redirect}
           // handleRedirect={this.redirect}
           registeredUsers={this.state.registeredUsers}
+          getBookings= {this.state.getBookings}
         />
         <Footer />
       </div>
