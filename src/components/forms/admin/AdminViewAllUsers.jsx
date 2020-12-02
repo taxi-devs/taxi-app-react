@@ -1,5 +1,10 @@
+import { useContext } from "react";
+import { UserContext } from "../../UserContext";
+
 const ViewUsers = ({ users }) => {
-  // console.log("herere....", users.users);
+  const msg = useContext(UserContext);
+
+  console.log("herere....", users);
   return (
     <div className="body-page">
       {users === undefined ? (
@@ -21,6 +26,7 @@ const ViewUsers = ({ users }) => {
           })}
         </>
       )}
+      <span color="black">{msg}</span>
     </div>
   );
 };

@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import Slide from "./Slide";
 import { Link } from "react-router-dom";
+import { UserContext } from "./UserContext";
 
 const Home = ({ carItems }) => {
+  const msg = useContext(UserContext);
+
   return (
     <div className="body-page">
       {/* <div>{{ authStatus }}</div> */}
@@ -11,6 +15,7 @@ const Home = ({ carItems }) => {
       <h4 style={{ margin: 5 }}>
         <q>Check Us Out</q>
       </h4>
+      <span>{msg}</span>
       <Slide carItems={carItems} />
 
       <button
