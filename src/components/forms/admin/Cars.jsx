@@ -1,9 +1,5 @@
-import React from 'react'
+const ViewsCars = () => {
+  return <h3 color="black">ViewCars</h3>;
+};
 
-export default function Cars() {
-    return (
-        <div>
-            
-        </div>
-    )
-}
+export default ViewsCars;

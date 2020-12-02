@@ -1,3 +1,7 @@
+import React, { useState, useEffect, createContext } from "react";
+import Cookies from "js-cookie";
+import AuthApi from "./AuthApi";
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -6,77 +10,179 @@ import {
   Redirect,
 } from "react-router-dom";
 
+import {
+  AdminAccess,
+  AdminRoutes,
+  ProtectedLogin,
+  ProtectedBookingRoute,
+} from "./RouteFunctions";
+
+import { UserContext } from "./UserContext";
+
 import Gallery from "./Gallery";
 import Home from "./Home";
-import BookingAdd from "./forms/BookingAdd";
-// import AddDriver from "./admin/AdminAddDriver";
 
+// ============ User Panel ===============
+import UserBooking from "./forms/client/UserBookingForm";
 import UserSignUp from "./forms/client/UserSignUpForm";
 import UserLogin from "./forms/client/UserLoginForm";
-import BookingForm from "./forms/client/UserBookingForm";
 
-import ViewUsers from "./forms/admin/AdminViewAllUsers";
+// =========== Admin Panel ===================
+import AdminLogin from "./AdminLoginMenu";
+import AdminPanel from "./AdminConsole";
 
 const Body = ({ carItems, registeredUsers }) => {
+  // const Auth = useContext(AuthApi);
+  const [userAuth, setUserAuth] = useState(false);
+  const [adminAuth, setAdminAuth] = useState(false);
+
+  const readCookie = () => {
+    const user = Cookies.get("user");
+    const admin = Cookies.get("admin");
+
+    if (user) {
+      setUserAuth(true);
+    }
+
+    if (admin) {
+      setAdminAuth(true);
+    }
+  };
+
+  useEffect(() => {
+    readCookie();
+  }, []);
+
+  // const AuthBtn = withRouter(({ history }) =>
+  //   readCookie === true ? (
+  //     <p>
+  //       Welcome, you are logged in{" "}
+  //       <button
+  //         onClick={() => {
+  //           history.push("/");
+  //           setAuth(false);
+  //           Cookies.remove("user");
+  //         }}
+  //       >
+  //         Log Out
+  //       </button>
+  //     </p>
+  //   ) : (
+  //     <p>Log In</p>
+  //   )
+  // );
+
   return (
-    <Router>
-      <header>
-        <div id="app-name">
-          <h2>Taxi App</h2>
-        </div>
+    <AuthApi.Provider
+      value={{ userAuth, setUserAuth, adminAuth, setAdminAuth }}
+    >
+      <Router>
+        <header>
+          <div id="app-name">
+            <h2>Taxi App</h2>
+          </div>
 
-        <nav>
-          <Link to="/">
-            <li>Home</li>
-          </Link>
-          <Link to="/gallery">
-            <li>Our Cars</li>
-          </Link>
-          <Link to="/register">
-            <li>Sign Up</li>
-          </Link>
+          <nav>
+            <Link to="/">
+              <li>Home</li>
+            </Link>
 
-          <Link to="/registered-user">
-            <li>Users</li>
-          </Link>
+            <Link to="/gallery">
+              <li>Our Cars</li>
+            </Link>
 
-          <Link to="/login">
-            <li>User Login</li>
-          </Link>
-        </nav>
-      </header>
+            <Link to="/book">
+              <li>Make Booking</li>
+            </Link>
 
-      <Switch>
-        <Route exact path="/">
-          <Home
-            carItems={carItems}
-            gohandleRedirect={() => {
-              return <Redirect to="/gallery" />;
-            }}
-          />
-        </Route>
-        <Route path="/gallery">
-          <Gallery carItems={carItems} />
-        </Route>
+            <Link to="/register">
+              <li>Sign Up</li>
+            </Link>
 
-        <Route path="/register">
-          <UserSignUp />
-        </Route>
+            <Link to="/login">
+              <li>Login</li>
+            </Link>
 
-        <Route path="/registered-user">
-          <ViewUsers registeredUsers={registeredUsers} />
-        </Route>
+            <Link to="/admin">
+              <li>Admin</li>
+            </Link>
+          </nav>
+        </header>
 
-        <Route path="/login">
-          <UserLogin />
-        </Route>
+        <Switch>
+          <UserContext.Provider value="Hello test from useContext hook">
+            <Route
+              exact
+              path="/"
+              render={(props) => <Home {...props} carItems={carItems} />}
+            />
 
-        <Route path="/book">
-          <BookingForm />
-        </Route>
-      </Switch>
-    </Router>
+            <Route
+              path="/gallery"
+              render={(props) => <Gallery {...props} carItems={carItems} />}
+            />
+
+            <Route
+              path="/register"
+              render={(props) => <UserSignUp {...props} />}
+            />
+
+            <ProtectedLogin
+              component={UserLogin}
+              path="/login"
+              auth={userAuth}
+            />
+
+            <ProtectedBookingRoute
+              component={UserBooking}
+              path="/book"
+              auth={userAuth}
+            />
+
+            <AdminAccess
+              path="/admin"
+              component={AdminLogin}
+              auth={adminAuth}
+            />
+
+            <AdminRoutes
+              path="/dashboard"
+              component={AdminPanel}
+              auth={adminAuth}
+              users={registeredUsers}
+            />
+          </UserContext.Provider>
+        </Switch>
+      </Router>
+    </AuthApi.Provider>
   );
 };
+
+// const AdminAccess = ({ auth, component: Component, ...rest }) => {
+//   return (
+//     <Route
+//       {...rest}
+//       render={() => (!auth ? <Component /> : <Redirect to="/dashboard" />)}
+//     />
+//   );
+// };
+
+// const ProtectedLogin = ({ auth, component: Component, ...rest }) => {
+//   return (
+//     <Route
+//       {...rest}
+//       render={() => (!auth ? <Component /> : <Redirect to="/book" />)}
+//     />
+//   );
+// };
+
+// const ProtectedBookingRoute = ({ auth, component: Component, ...rest }) => {
+//   return (
+//     <Route
+//       {...rest}
+//       render={() => (auth ? <Component /> : <Redirect to="/login" />)}
+//     />
+//   );
+// };
 
 export default Body;

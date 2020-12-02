@@ -9,9 +9,7 @@
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "axios": "^0.21.0",
-    "husky": "^4.3.0",
-    "lint-staged": "^10.5.2",
-    "prettier": "^2.2.0",
+    "js-cookie": "2.2.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-elastic-carousel": "^0.9.5",
@@ -44,5 +42,7 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:8080"
+  "devDependencies": {
+    "webpack-dev-server": "^3.11.0"
+  }
 }
