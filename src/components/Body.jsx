@@ -7,7 +7,6 @@ import {
   Switch,
   Route,
   Link,
-  Redirect,
 } from "react-router-dom";
 
 import {
@@ -26,6 +25,11 @@ import Home from "./Home";
 import UserBooking from "./forms/client/UserBookingForm";
 import UserSignUp from "./forms/client/UserSignUpForm";
 import UserLogin from "./forms/client/UserLoginForm";
+import Test from "./Test";
+import BookingAdd from './forms/BookingAdd';
+import DriverAdd from './forms/admin/DriverAdd';
+import CarAdd from './forms/admin/CarAdd'
+import Bookings from "./forms/Bookings";
 
 // =========== Admin Panel ===================
 import AdminLogin from "./AdminLoginMenu";
@@ -155,34 +159,5 @@ const Body = ({ carItems, registeredUsers }) => {
         </Switch>
       </Router>
     </AuthApi.Provider>
-  );
-};
-
-// const AdminAccess = ({ auth, component: Component, ...rest }) => {
-//   return (
-//     <Route
-//       {...rest}
-//       render={() => (!auth ? <Component /> : <Redirect to="/dashboard" />)}
-//     />
-//   );
-// };
-
-// const ProtectedLogin = ({ auth, component: Component, ...rest }) => {
-//   return (
-//     <Route
-//       {...rest}
-//       render={() => (!auth ? <Component /> : <Redirect to="/book" />)}
-//     />
-//   );
-// };
-
-// const ProtectedBookingRoute = ({ auth, component: Component, ...rest }) => {
-//   return (
-//     <Route
-//       {...rest}
-//       render={() => (auth ? <Component /> : <Redirect to="/login" />)}
-//     />
-//   );
-// };
-
-export default Body;
+  )
+}

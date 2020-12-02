@@ -2,10 +2,14 @@ import { useContext } from "react";
 import Slide from "./Slide";
 import { Link } from "react-router-dom";
 import { UserContext } from "./UserContext";
+import React from 'react';
+import { useHistory } from 'react-router-dom';
+
 
 const Home = ({ carItems }) => {
   const msg = useContext(UserContext);
 
+  console.log("Home.jsx rendering...")
   return (
     <div className="body-page">
       {/* <div>{{ authStatus }}</div> */}
