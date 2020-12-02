@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 
 import axios from "axios";
 import useForm from "./useForm";
 
+import AuthApi from "../../AuthApi";
+import Cookies from "js-cookie";
+
 const UserSignUp = () => {
-  const url = "http://192.168.100.61:2000";
+  const url = "http://localhost:2000";
+
+  const Auth = useContext(AuthApi);
+
+  const makeUserCookie = () => {
+    Auth.setUserAuth(true);
+
+    Cookies.set("user", "loginTrue");
+  };
 
   const [{ email, fullname, password, username }, handleChange] = useForm({
     email: "",
@@ -16,6 +27,8 @@ const UserSignUp = () => {
 
   const registerNewUser = (evt) => {
     evt.preventDefault();
+    makeUserCookie();
+
     console.log(evt.target.id);
 
     const newUserDetails = {
@@ -24,6 +37,7 @@ const UserSignUp = () => {
       password: password,
       username: username,
     };
+
     console.log(newUserDetails);
 
     axios

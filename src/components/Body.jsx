@@ -1,23 +1,18 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import AuthApi from "./AuthApi";
 
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect,
-} from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 import {
   AdminAccess,
   AdminRoutes,
   ProtectedLogin,
   ProtectedBookingRoute,
+  RegisterRoute,
 } from "./RouteFunctions";
 
-import { UserContext } from "./UserContext";
+// import { UserContext } from "./UserContext";
 
 import Gallery from "./Gallery";
 import Home from "./Home";
@@ -31,7 +26,7 @@ import UserLogin from "./forms/client/UserLoginForm";
 import AdminLogin from "./AdminLoginMenu";
 import AdminPanel from "./AdminConsole";
 
-const Body = ({ carItems, registeredUsers }) => {
+const Body = ({ carItems, registeredUsers, getUsers }) => {
   // const Auth = useContext(AuthApi);
   const [userAuth, setUserAuth] = useState(false);
   const [adminAuth, setAdminAuth] = useState(false);
@@ -52,25 +47,6 @@ const Body = ({ carItems, registeredUsers }) => {
   useEffect(() => {
     readCookie();
   }, []);
-
-  // const AuthBtn = withRouter(({ history }) =>
-  //   readCookie === true ? (
-  //     <p>
-  //       Welcome, you are logged in{" "}
-  //       <button
-  //         onClick={() => {
-  //           history.push("/");
-  //           setAuth(false);
-  //           Cookies.remove("user");
-  //         }}
-  //       >
-  //         Log Out
-  //       </button>
-  //     </p>
-  //   ) : (
-  //     <p>Log In</p>
-  //   )
-  // );
 
   return (
     <AuthApi.Provider
@@ -110,79 +86,46 @@ const Body = ({ carItems, registeredUsers }) => {
         </header>
 
         <Switch>
-          <UserContext.Provider value="Hello test from useContext hook">
-            <Route
-              exact
-              path="/"
-              render={(props) => <Home {...props} carItems={carItems} />}
-            />
+          {/* <UserContext.Provider value="Hello test from useContext hook"> */}
+          <Route
+            exact
+            path="/"
+            render={(props) => <Home {...props} carItems={carItems} />}
+          />
 
-            <Route
-              path="/gallery"
-              render={(props) => <Gallery {...props} carItems={carItems} />}
-            />
+          <Route
+            path="/gallery"
+            render={(props) => <Gallery {...props} carItems={carItems} />}
+          />
 
-            <Route
-              path="/register"
-              render={(props) => <UserSignUp {...props} />}
-            />
+          <RegisterRoute
+            path="/register"
+            component={UserSignUp}
+            auth={userAuth}
+          />
 
-            <ProtectedLogin
-              component={UserLogin}
-              path="/login"
-              auth={userAuth}
-            />
+          <ProtectedLogin component={UserLogin} path="/login" auth={userAuth} />
 
-            <ProtectedBookingRoute
-              component={UserBooking}
-              path="/book"
-              auth={userAuth}
-            />
+          <ProtectedBookingRoute
+            component={UserBooking}
+            path="/book"
+            auth={userAuth}
+          />
 
-            <AdminAccess
-              path="/admin"
-              component={AdminLogin}
-              auth={adminAuth}
-            />
+          <AdminAccess path="/admin" component={AdminLogin} auth={adminAuth} />
 
-            <AdminRoutes
-              path="/dashboard"
-              component={AdminPanel}
-              auth={adminAuth}
-              users={registeredUsers}
-            />
-          </UserContext.Provider>
+          <AdminRoutes
+            path="/dashboard"
+            component={AdminPanel}
+            auth={adminAuth}
+            users={registeredUsers}
+            getUsers={getUsers}
+          />
+          {/* </UserContext.Provider> */}
         </Switch>
       </Router>
     </AuthApi.Provider>
   );
 };
-
-// const AdminAccess = ({ auth, component: Component, ...rest }) => {
-//   return (
-//     <Route
-//       {...rest}
-//       render={() => (!auth ? <Component /> : <Redirect to="/dashboard" />)}
-//     />
-//   );
-// };
-
-// const ProtectedLogin = ({ auth, component: Component, ...rest }) => {
-//   return (
-//     <Route
-//       {...rest}
-//       render={() => (!auth ? <Component /> : <Redirect to="/book" />)}
-//     />
-//   );
-// };
-
-// const ProtectedBookingRoute = ({ auth, component: Component, ...rest }) => {
-//   return (
-//     <Route
-//       {...rest}
-//       render={() => (auth ? <Component /> : <Redirect to="/login" />)}
-//     />
-//   );
-// };
 
 export default Body;

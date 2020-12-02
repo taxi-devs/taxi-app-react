@@ -123,12 +123,52 @@ li:hover {
 button {
   cursor: pointer;
   text-decoration: none;
+  /* margin-bottom:10px; */
+  margin:10px ;
+
 }
 
-table {
+/* table {
   margin: 0 auto;
   padding: 10px;
-  background-color: rgb(99, 98, 93);
+  color: #102233;
+} */
+
+.table {
+  background-color: rgb(212, 218, 228);
+  width: 50%;
+  margin-bottom: 1rem;
+  color: #212529;
+}
+
+.table th,
+.table td {
+  padding: 0.75rem;
+  vertical-align: top;
+  border-top: 1px solid #20262c;
+}
+
+.table thead th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #20262c;
+}
+
+.table tbody + tbody {
+  border-top: 2px solid #20262c;
+}
+
+/* .table-bordered {
+  border: 1px solid #102233;
+} */
+
+.table-bordered th,
+.table-bordered td {
+  border: 1px solid #20262c;
+}
+
+.table-bordered thead th,
+.table-bordered thead td {
+  border-bottom-width: 2px;
 }
 
 .footer {
@@ -150,6 +190,3 @@ table {
   color: #03963b;
 }
 
-/* .left-section, .right-section{
-width: 50%;
-} */

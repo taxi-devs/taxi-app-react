@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import axios from "axios";
 
 import AuthApi from "../../AuthApi";
@@ -27,6 +27,7 @@ export default function UserBooking(props) {
     car,
     number_of_passengers,
   } = eachEntry;
+
   const history = useHistory();
 
   const handleInputChange = (event) => {
@@ -175,7 +176,9 @@ export default function UserBooking(props) {
           />
         </div>
       </form>
-      <button onClick={handleLogOut}>Logout</button>
+      <button onClick={handleLogOut}>
+        <Link to="/">Logout</Link>
+      </button>
     </div>
   );
 }
