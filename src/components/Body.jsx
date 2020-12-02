@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect } from "react";
 import Cookies from "js-cookie";
 import AuthApi from "./AuthApi";
 
@@ -25,18 +25,12 @@ import Home from "./Home";
 import UserBooking from "./forms/client/UserBookingForm";
 import UserSignUp from "./forms/client/UserSignUpForm";
 import UserLogin from "./forms/client/UserLoginForm";
-import Test from "./Test";
-import BookingAdd from './forms/BookingAdd';
-import DriverAdd from './forms/admin/DriverAdd';
-import CarAdd from './forms/admin/CarAdd'
-import Bookings from "./forms/Bookings";
 
 // =========== Admin Panel ===================
 import AdminLogin from "./AdminLoginMenu";
 import AdminPanel from "./AdminConsole";
 
-const Body = ({ carItems, registeredUsers }) => {
-  // const Auth = useContext(AuthApi);
+const Body = ({ carItems, registeredUsers, bookings }) => {
   const [userAuth, setUserAuth] = useState(false);
   const [adminAuth, setAdminAuth] = useState(false);
 
@@ -56,25 +50,6 @@ const Body = ({ carItems, registeredUsers }) => {
   useEffect(() => {
     readCookie();
   }, []);
-
-  // const AuthBtn = withRouter(({ history }) =>
-  //   readCookie === true ? (
-  //     <p>
-  //       Welcome, you are logged in{" "}
-  //       <button
-  //         onClick={() => {
-  //           history.push("/");
-  //           setAuth(false);
-  //           Cookies.remove("user");
-  //         }}
-  //       >
-  //         Log Out
-  //       </button>
-  //     </p>
-  //   ) : (
-  //     <p>Log In</p>
-  //   )
-  // );
 
   return (
     <AuthApi.Provider
@@ -154,10 +129,13 @@ const Body = ({ carItems, registeredUsers }) => {
               component={AdminPanel}
               auth={adminAuth}
               users={registeredUsers}
+              bookings={bookings}
             />
+            
           </UserContext.Provider>
         </Switch>
       </Router>
     </AuthApi.Provider>
   )
 }
+export default Body;
