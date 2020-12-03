@@ -103,15 +103,13 @@ class App extends Component {
 
   render() {
     console.log("App.js rendering...");
-    // console.log("data =>", this.state.registeredUsers);
     return (
       <div className="wrapper">
         <Body
           carItems={this.state.items}
-          // redirectStatus={this.state.redirect}
-          // handleRedirect={this.redirect}
           registeredUsers={this.state.registeredUsers}
           bookings={this.state.bookings}
+          getAllUsers={this.getRegisteredUsers}
         />
         <Footer />
       </div>

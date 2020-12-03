@@ -53,8 +53,7 @@ const ViewUsers = ({ users, getUsers }) => {
                 <th>email</th>
                 <th>edit</th>
                 <th>delete</th>
-                                 <button onClick={getAllUsers}>Refresh</button>
-
+                <button onClick={getAllUsers}>Refresh</button>
               </tr>
             </thead>
 
