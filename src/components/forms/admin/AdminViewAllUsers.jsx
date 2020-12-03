@@ -8,7 +8,7 @@ const ViewUsers = ({ users, getUsers }) => {
   };
 
   const editRow = () => {
-    console.log("editRow");
+    console.log("edit btn clicked");
   };
 
   // delete route
@@ -27,7 +27,6 @@ const ViewUsers = ({ users, getUsers }) => {
       .catch(function (err) {
         console.log("USER NOT DELETED");
         console.log(err);
-        getAllUsers();
       });
   };
 
@@ -54,6 +53,8 @@ const ViewUsers = ({ users, getUsers }) => {
                 <th>email</th>
                 <th>edit</th>
                 <th>delete</th>
+                                 <button onClick={getAllUsers}>Refresh</button>
+
               </tr>
             </thead>
 
