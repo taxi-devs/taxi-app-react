@@ -1,11 +1,8 @@
-import React, { useContext, useState } from "react";
+import React from "react";
 import Booking from "../Booking";
 import { Link } from "react-router-dom";
-import { UserContext } from '../../UserContext'
 
 const ViewBookings = (props) => {
-  const [bookings, setBookings] = useState();
-
 
   const allBookingsRender = (bookings) => {
     bookings === undefined ? (

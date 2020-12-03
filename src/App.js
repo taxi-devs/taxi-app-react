@@ -81,7 +81,7 @@ class App extends Component {
   getBookings = () => {
     console.log("this.state.url", this.state.url);
     axios
-      .get(`${this.state.url}/book`)
+      .get(`${this.state.url}/view-all-booking`)
       .then((res) => {
         // res = res.json();
         console.log("RES", res.data);
