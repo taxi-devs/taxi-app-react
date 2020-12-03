@@ -20,7 +20,7 @@ const AdminPanel = (props) => {
     Cookies.remove("admin");
   };
   return (
-    <AuthApi.Provider>
+    <AuthApi.Provider value=''>
       <Router>
         <h4>Admin Menu</h4>
         <header>
@@ -41,7 +41,7 @@ const AdminPanel = (props) => {
         </header>
         <Switch>
           <Route path="/users">
-            <ViewUsers users={props.users} />
+            <ViewUsers users={props.users} getUsers={props.getUsers} />
           </Route>
           <Route path="/bookings">
             <ViewBookings

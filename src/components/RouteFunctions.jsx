@@ -17,6 +17,23 @@ export const AdminAccess = ({ auth, component: Component, ...rest }) => {
   );
 };
 
+export const RegisterRoute = ({ auth, component: Component, ...rest }) => {
+  return (
+    <Route
+      {...rest}
+      render={(props) =>
+        !auth ? (
+          <Component {...props} />
+        ) : (
+          <Redirect
+            to={{ pathname: "/book", state: { from: props.location } }}
+          />
+        )
+      }
+    />
+  );
+};
+
 export const AdminRoutes = ({ auth, component: Component, ...rest }) => {
   return (
     <Route

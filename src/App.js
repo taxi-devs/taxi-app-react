@@ -5,7 +5,7 @@ import "./App.css";
 import Body from "./components/Body";
 import Footer from "./components/Footer";
 
-export default class App extends Component {
+class App extends Component {
   state = {
     url: "http://localhost:2000",
     registeredUsers: [
@@ -59,11 +59,11 @@ export default class App extends Component {
         tagLine: "Light, & Fast. Perfect for 2-3 people",
       },
     ],
-    bookings: []
+    bookings: [],
   };
 
   getRegisteredUsers = () => {
-    console.log("getRegisterUsers()")
+    console.log("getRegisterUsers()");
     axios
       .get(`${this.state.url}/view-user`)
       .then((resp) => {
@@ -79,30 +79,30 @@ export default class App extends Component {
   };
 
   getBookings = () => {
-    console.log('this.state.url', this.state.url);
+    console.log("this.state.url", this.state.url);
     axios
       .get(`${this.state.url}/book`)
-      .then(res => {
+      .then((res) => {
         // res = res.json();
         console.log("RES", res.data);
-        return res.data
+        return res.data;
       })
-      .then(data => {
-        this.setState({ bookings: data })
-        console.log('BOOKING RESPONSE DATA', this.state.bookings);
+      .then((data) => {
+        this.setState({ bookings: data });
+        console.log("BOOKING RESPONSE DATA", this.state.bookings);
       })
       .catch((err) => console.log(err));
   };
 
   componentDidMount() {
-    console.log("mounting compoents...")
+    console.log("mounting compoents...");
     this.getRegisteredUsers();
     this.getBookings();
-    console.log("components mounted")
+    console.log("components mounted");
   }
 
   render() {
-    console.log("App.js rendering...")
+    console.log("App.js rendering...");
     // console.log("data =>", this.state.registeredUsers);
     return (
       <div className="wrapper">
@@ -117,4 +117,6 @@ export default class App extends Component {
       </div>
     );
   }
-}
+} // class component end block
+
+export default App;
