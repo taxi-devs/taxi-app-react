@@ -23,7 +23,7 @@ export default function Bookings({ bookings }) {
       <table className="table table-bordered">
         <thead>
           <tr>
-            <th>Booking ID</th>
+            <th>Passenger Name</th>
             <th>Pickup location</th>
             <th>Pickup time</th>
             <th>Date</th>
