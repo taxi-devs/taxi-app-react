@@ -129,7 +129,8 @@ button {
 }
 
 .table {
-  background-color: rgb(212, 218, 228);
+  margin: 0 auto;
+  background-color: rgba(212, 218, 228, 0.7);
   width: 50%;
   margin-bottom: 1rem;
   color: #212529;
@@ -145,6 +146,10 @@ button {
 .table thead th {
   vertical-align: bottom;
   border-bottom: 2px solid #20262c;
+}
+
+.table th:hover, .table tr:hover {
+  background-color: rgb(212, 218, 228);
 }
 
 .table tbody + tbody {
@@ -163,6 +168,10 @@ button {
 .table-bordered thead th,
 .table-bordered thead td {
   border-bottom-width: 2px;
+}
+
+button {
+  padding: .5rem 1rem;
 }
 
 .footer {

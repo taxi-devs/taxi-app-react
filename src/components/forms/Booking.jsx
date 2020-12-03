@@ -5,11 +5,17 @@ export default function Booking(props) {
     console.log("BOOKING PROPS", props)
 
     return (
-        <div>
-            <h3>{props.passenger_name}</h3>
-            <p>{props.pickup_location}</p>
-            <p>{props.pickup_time}</p>
-            <p>{props.date}</p>
-        </div>
+        <>
+        <tbody>
+        <tr>
+            <td>{props.passenger_name}</td>
+            <td>{props.pickup_location}</td>
+            <td>{props.pickup_time}</td>
+            <td>{props.date}</td>
+            <td><button>Edit</button></td>
+            <td><button>Delete</button></td>
+        </tr>
+        </tbody>
+        </>
     )
 }
