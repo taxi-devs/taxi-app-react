@@ -87,3 +87,9 @@ export const ProtectedBookingRoute = ({
     />
   );
 };
+
+export const findBooking = (bookings, id) => {
+  const theBooking  = bookings.find( booking => booking._id === id);
+  console.log("theBooking", theBooking)
+  return theBooking
+}

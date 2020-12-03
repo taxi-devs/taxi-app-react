@@ -59,10 +59,11 @@ class App extends Component {
         tagLine: "Light, & Fast. Perfect for 2-3 people",
       },
     ],
+    bookings: [],
   };
 
   getRegisteredUsers = () => {
-    console.log(this.state.url);
+    console.log("getRegisterUsers()");
     axios
       .get(`${this.state.url}/view-user`)
       .then((resp) => {
@@ -78,25 +79,39 @@ class App extends Component {
   };
 
   getBookings = () => {
+    console.log("this.state.url", this.state.url);
     axios
       .get(`${this.state.url}/book`)
-      .then((res) => console.log(res))
+      .then((res) => {
+        // res = res.json();
+        console.log("RES", res.data);
+        return res.data;
+      })
+      .then((data) => {
+        this.setState({ bookings: data });
+        console.log("BOOKING RESPONSE DATA", this.state.bookings);
+      })
       .catch((err) => console.log(err));
   };
+
   componentDidMount() {
+    console.log("mounting compoents...");
     this.getRegisteredUsers();
     this.getBookings();
+    console.log("components mounted");
   }
 
   render() {
-    console.log("data =>", this.state.registeredUsers);
+    console.log("App.js rendering...");
+    // console.log("data =>", this.state.registeredUsers);
     return (
       <div className="wrapper">
         <Body
           carItems={this.state.items}
-          redirectStatus={this.state.redirect}
+          // redirectStatus={this.state.redirect}
+          // handleRedirect={this.redirect}
           registeredUsers={this.state.registeredUsers}
-          getUsers={this.getRegisteredUsers}
+          bookings={this.state.bookings}
         />
         <Footer />
       </div>

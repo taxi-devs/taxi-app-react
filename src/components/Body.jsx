@@ -26,8 +26,7 @@ import UserLogin from "./forms/client/UserLoginForm";
 import AdminLogin from "./AdminLoginMenu";
 import AdminPanel from "./AdminConsole";
 
-const Body = ({ carItems, registeredUsers, getUsers }) => {
-  // const Auth = useContext(AuthApi);
+const Body = ({ carItems, registeredUsers, getUsers, bookings }) => {
   const [userAuth, setUserAuth] = useState(false);
   const [adminAuth, setAdminAuth] = useState(false);
 
